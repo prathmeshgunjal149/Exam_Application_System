@@ -1,4 +1,8 @@
 let express=require("express");
-app=("express");
+let app=express();
+ let conn=require("./config/db.js");
 
-module.exports = app;
+
+
+
+module.exports=app;
