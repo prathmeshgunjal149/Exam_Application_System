@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-const conn = require('../config/connection'); // Correct DB path
-const regCtrl = require("../controller/regCtrl"); // Correct controller path
+const conn = require('../config/connection'); // DB connection
+const regCtrl = require("../controller/regCtrl"); // Admin controller
 
 // Home Page
 router.get("/", (req, res) => {
@@ -25,7 +25,15 @@ router.get("/admin", regCtrl.regCtrl);
 // Handle Login
 router.post("/login", (req, res) => {
   const { username, password } = req.body;
-  const sql = "SELECT * FROM admin WHERE username = ? AND password = ?";
+
+  // Fixed admin login
+  if (username === "admin" && password === "admin@123") {
+    res.render("AdminDashboard");
+    //return res.send("Welcome, Admin!");
+  }
+
+  // Check for student login
+  const sql = "SELECT * FROM student WHERE semail = ? AND spassword = ?";
   conn.query(sql, [username, password], (err, result) => {
     if (err) {
       console.error("Database error:", err);
@@ -33,7 +41,7 @@ router.post("/login", (req, res) => {
     }
 
     if (result.length > 0) {
-      res.send(`Welcome, ${result[0].username}`);
+      res.send(`Welcome, ${result[0].sname}`);
     } else {
       res.send("Invalid credentials.");
     }
@@ -43,6 +51,7 @@ router.post("/login", (req, res) => {
 // Handle Registration
 router.post("/register", (req, res) => {
   const { fullname, email, password, contact } = req.body;
+
   const sql = `INSERT INTO student (sname, semail, spassword, scontact)
                VALUES (?, ?, ?, ?)`;
 
@@ -51,6 +60,7 @@ router.post("/register", (req, res) => {
       console.error("Registration error:", err);
       return res.send("Registration failed — username/email may exist.");
     }
+
     res.send("Student registered successfully!");
   });
 });

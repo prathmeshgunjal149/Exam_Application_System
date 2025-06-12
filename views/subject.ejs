@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Manage Subjects</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-4">
+    <h2>Existing Subjects</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Subject ID</th>
+          <th>Subject Name</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% subjects.forEach(sub => { %>
+          <tr>
+            <td><%= sub.cid %></td>
+            <td><%= sub.cname %></td>
+            <td>
+              <a href="/admin/subject/delete/<%= sub.cid %>" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+
+    <hr>
+
+    <h2>Add New Subject</h2>
+    <form method="POST" action="/admin/subject">
+      <div class="mb-3">
+        <input type="text" name="cname" class="form-control" placeholder="Enter subject name" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Add Subject</button>
+    </form>
+  </div>
+</body>
+</html>
