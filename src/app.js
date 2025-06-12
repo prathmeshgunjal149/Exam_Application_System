@@ -5,10 +5,7 @@ const bodyParser = require("body-parser");
 
 const homeRoutes = require('./routs/homeRoutes');
 
-<<<<<<< HEAD
-=======
 const homeRoutes = require("./routes/homeRoutes.js");
->>>>>>> 1318ce0383b43d581dd55fe30442f90a6d40a43b
 app.use("/", homeRoutes);
 
 
