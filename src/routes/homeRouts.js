@@ -1,8 +1,27 @@
 const express = require("express");
 const router = express.Router();
+<<<<<<< HEAD
 const conn = require('../config/connection'); // ✅ Correct path
 
 
+=======
+const regCtrl = require("../controller/regCtrl"); 
+
+router.get("/", (req, res) => {
+    res.render("home");
+});
+
+router.get("/regCtrl",(req,res)=>
+{
+    res.render("login");
+});
+router.get("/login", (req, res) => {
+    res.render("login"); // views/login.ejs
+});
+router.get("/register", (req, res) => {
+    res.render("register"); // views/login.ejs
+});
+>>>>>>> 6bab29c06ce568b814a76dbc79f776cd7936c422
 // Home Page
 router.get("/", (req, res) => {
   res.render("home");
