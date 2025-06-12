@@ -1,5 +1,4 @@
-let app=require("./src/app.js");
-app.listen(3000,(req,res)=>
-{
+const app = require("./src/app"); // ✅ Matches folder structure
+app.listen(3000, () => {
     console.log("server started");
 });
