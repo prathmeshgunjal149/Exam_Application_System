@@ -19,7 +19,7 @@ router.get("/register", (req, res) => {
   res.render("register");
 });
 
-// Admin Dashboard (using controller)
+// Admin Dashboard (controller-based)
 router.get("/admin", regCtrl.regCtrl);
 
 // Handle Login
@@ -28,16 +28,15 @@ router.post("/login", (req, res) => {
 
   // Fixed admin login
   if (username === "admin" && password === "admin@123") {
-    res.render("AdminDashboard");
-    //return res.send("Welcome, Admin!");
+    return res.render("AdminDashboard"); // ✅ Add return to stop execution
   }
 
-  // Check for student login
+  // Student login
   const sql = "SELECT * FROM student WHERE semail = ? AND spassword = ?";
   conn.query(sql, [username, password], (err, result) => {
     if (err) {
       console.error("Database error:", err);
-      return res.send("Error during login.");
+      return res.status(500).send("Error during login.");
     }
 
     if (result.length > 0) {
@@ -58,10 +57,48 @@ router.post("/register", (req, res) => {
   conn.query(sql, [fullname, email, password, contact], (err, result) => {
     if (err) {
       console.error("Registration error:", err);
-      return res.send("Registration failed — username/email may exist.");
+      return res.status(500).send("Registration failed — username/email may exist.");
     }
 
     res.send("Student registered successfully!");
+  });
+});
+
+// Show all subjects
+router.get("/subject", (req, res) => {
+  const sql = "SELECT * FROM course";
+  conn.query(sql, (err, results) => {
+    if (err) {
+      console.error("Error fetching subjects:", err);
+      return res.status(500).send("Error fetching subjects");
+    }
+    res.render("subject", { subjects: results });
+  });
+});
+
+// Add new subject
+router.post("/subject", (req, res) => {
+  const { cname } = req.body;
+  const sql = "INSERT INTO course (cname) VALUES (?)";
+  conn.query(sql, [cname], (err, result) => {
+    if (err) {
+      console.error("Error adding subject:", err);
+      return res.status(500).send("Failed to add subject");
+    }
+    res.redirect("/subject");
+  });
+});
+
+// Delete subject
+router.get("/subject/delete/:id", (req, res) => {
+  const { id } = req.params;
+  const sql = "DELETE FROM course WHERE cid = ?";
+  conn.query(sql, [id], (err, result) => {
+    if (err) {
+      console.error("Error deleting subject:", err);
+      return res.status(500).send("Failed to delete subject");
+    }
+    res.redirect("/subject");
   });
 });
 

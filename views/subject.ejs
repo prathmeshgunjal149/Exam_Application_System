@@ -1,42 +1,87 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Manage Subjects</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Subjects</title>
+  <link rel="stylesheet" href="/css/style.css"> <!-- optional -->
+  <style>
+    .container { display: flex; }
+    .sidebar {
+      width: 200px;
+      background-color: #f4f4f4;
+      padding: 20px;
+      height: 100vh;
+    }
+    .sidebar a { display: block; margin-bottom: 10px; text-decoration: none; color: #333; }
+    .main {
+      flex: 1;
+      padding: 30px;
+    }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
+    .delete-btn {
+      background: #d9534f;
+      color: white;
+      padding: 5px 10px;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    .form-group { margin-bottom: 20px; }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <div class="container mt-4">
-    <h2>Existing Subjects</h2>
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>Subject ID</th>
-          <th>Subject Name</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% subjects.forEach(sub => { %>
+  <div class="container">
+    <div class="sidebar">
+      <h3>Admin</h3>
+      <a href="/admin">Dashboard</a>
+      <a href="/subject">Subject</a>
+      <a href="/admin/exam">Exam</a>
+      <a href="/admin/questions">Questions</a>
+      <a href="/admin/schedule">Schedule</a>
+    </div>
+    <div class="main">
+      <h2>Existing Courses</h2>
+      <table>
+        <thead>
           <tr>
-            <td><%= sub.cid %></td>
-            <td><%= sub.cname %></td>
-            <td>
-              <a href="/admin/subject/delete/<%= sub.cid %>" class="btn btn-danger btn-sm">Delete</a>
-            </td>
+            <th>Course ID</th>
+            <th>Name</th>
+            <th>Actions</th>
           </tr>
-        <% }) %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% subjects.forEach(subject => { %>
+            <tr>
+              <td><%= subject.cid %></td>
+              <td><%= subject.cname %></td>
+              <td>
+                <a class="delete-btn" href="/subject/delete/<%= subject.cid %>">Delete</a>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
 
-    <hr>
-
-    <h2>Add New Subject</h2>
-    <form method="POST" action="/admin/subject">
-      <div class="mb-3">
-        <input type="text" name="cname" class="form-control" placeholder="Enter subject name" required>
-      </div>
-      <button type="submit" class="btn btn-primary">Add Subject</button>
-    </form>
+      <h2>Add New Course</h2>
+      <form action="/subject" method="POST">
+        <div class="form-group">
+          <input type="text" name="cname" placeholder="Enter course name" required />
+        </div>
+        <button type="submit">Add Course</button>
+      </form>
+    </div>
   </div>
 </body>
 </html>
