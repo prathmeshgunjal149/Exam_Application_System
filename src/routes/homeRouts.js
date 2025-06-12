@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 <<<<<<< HEAD
+<<<<<<< HEAD
 const conn = require('../config/connection'); // ✅ Correct path
 
 
@@ -10,6 +11,12 @@ const regCtrl = require("../controller/regCtrl");
 router.get("/", (req, res) => {
     res.render("home");
 });
+=======
+const regCtrl = require("../controllers/regController");
+
+// Route to render login page
+router.get("/", regCtrl.loginPage);
+>>>>>>> Rutuja/Exam
 
 router.get("/regCtrl",(req,res)=>
 {
@@ -112,3 +119,4 @@ router.post("/register", (req, res) => {
 
 
 module.exports = router;
+

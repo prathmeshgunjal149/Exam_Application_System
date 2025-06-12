@@ -1,7 +1,16 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 let express = require("express");
 let app = express();
 let conn = require("./config/db.js");
+=======
+let express=require("express");
+let app=express();
+ let conn=require("./config/db.js");
+const bodyParser = require("body-parser");
+
+const homeRoutes = require('./routs/homeRoutes');
+>>>>>>> Rutuja/Exam
 
 app.set("view engine", "ejs");    //set ejs    
 
@@ -11,6 +20,7 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 const homeRoutes = require("./routes/homeRouts");
 app.use("/", homeRoutes);
+<<<<<<< HEAD
 =======
 const express = require("express");
 const app = express();
@@ -30,3 +40,14 @@ app.set("view engine", "ejs");    //set ejs
 
 >>>>>>> 67a519add6f65f756647b8f59b86623d4896709d
 module.exports = app;
+=======
+
+
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
+app.use(express.static("public"));
+let session=require("express-session");
+
+app.set("view engine",ejs);
+module.exports=app;
+>>>>>>> Rutuja/Exam
