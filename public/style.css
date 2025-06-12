@@ -12,6 +12,8 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+   background: linear-gradient(135deg, #89f7fe, #66a6ff);
+
 }
 
 /* ===== Card Wrapper ===== */
@@ -67,17 +69,9 @@ body {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-    /*transition: background 0.2s ease, transform 0.2s ease;*/
+    transition: background 0.2s ease, transform 0.2s ease;
 }
-/*.btn:hover {
-  background: #0056b3;
-  transform: translateY(-1px);
-}
-.btn:active {
-  transform: translateY(0);
-}*/
 
-/* ===== Responsive ===== */
 @media (max-width: 320px) {
   .con {
     width: 90%;
@@ -86,4 +80,16 @@ body {
   .con h2 {
     font-size: 1.3rem;
   }
+}
+/*register*/
+.login-container
+{
+  background: #fff;
+  width: 60%;             /* narrow fixed width */
+  margin: 30px auto;
+  padding: 1.5rem 1rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
