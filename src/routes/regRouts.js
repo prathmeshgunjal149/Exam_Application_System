@@ -1,2 +1,3 @@
-const homeRoutes = require("./routs/homeRoutes");
-app.use("/", homeRoutes);
+exports.loginPage = (req, res) => {
+    res.render("login");
+};
