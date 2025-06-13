@@ -22,6 +22,8 @@ app.use(session({
 
 // Set EJS as templating engine
 app.set("view engine", "ejs");
+//app.set("view engine", "ejs");
+app.set("views", "views"); // or correct path
 
 // Routes
 app.use("/", homeRoutes); // ✅ match the variable name at the top

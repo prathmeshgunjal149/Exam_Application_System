@@ -6,3 +6,4 @@ exports.regCtrl=(req,res)=>
 {
   res.render("AdminDashboard.ejs");
 }
+
