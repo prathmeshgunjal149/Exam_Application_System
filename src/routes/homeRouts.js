@@ -19,6 +19,7 @@ router.get("/register", (req, res) => {
   res.render("register");
 });
 
+
 // Admin Dashboard (controller-based)
 router.get("/admin", regCtrl.regCtrl);
 
@@ -101,5 +102,9 @@ router.get("/subject/delete/:id", (req, res) => {
     res.redirect("/subject");
   });
 });
-
+//exam
+router.get("/exam",(req,res)=>
+{
+  res.render("exam");
+})
 module.exports = router;
