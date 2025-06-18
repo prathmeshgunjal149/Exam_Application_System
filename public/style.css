@@ -1,47 +1,95 @@
+/* Center page & background */
+/* ===== Page Setup ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 body {
-
-
+  font-family: Arial, sans-serif;
+  background: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+   background: linear-gradient(135deg, #89f7fe, #66a6ff);
 
 }
-.container {
-background: linear-gradient(to right, #c2e9fb, #a1c4fd);
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  width: 400px;
+
+/* ===== Card Wrapper ===== */
+.con {
+  background: #fff;
+  width: 60%;             /* narrow fixed width */
+  margin: 70px auto;
+  padding: 1.5rem 1rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
   text-align: center;
-  margin:auto;
-  padding:10px 15px;
-  margin-top:100px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.form-control {
-  width: 80%;
-  padding: 12px 15px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  transition: border-color 0.3s;
-  font-size: 16px;
+.con:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
 }
-.form-control:focus {
-  outline: none;
-  border-color: #3498db;
-  box-shadow: 0 0 8px rgba(52, 152, 219, 0.2);
-}
-h2 {
-  margin-bottom: 20px;
+
+/* ===== Heading ===== */
+.con h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
   color: #333;
 }
-#control  {
-  background-color: #74b4df;
-  color: white;
-  padding: 8px 10px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s;
-  width:200px;
+
+/* ===== Form & Inputs ===== */
+.con form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
 }
-#control:hover {
-  background-color: #2980b9;
+.form-control {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0,123,255,0.3);
+  outline: none;
+}
+
+/* ===== Button ===== */
+.btn {
+  width: 100%;
+  padding: 0.6rem;
+  font-size: 1rem;
+  background-color: #007bff;
+
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+@media (max-width: 320px) {
+  .con {
+    width: 90%;
+    padding: 1rem;
+  }
+  .con h2 {
+    font-size: 1.3rem;
+  }
+}
+/*register*/
+.login-container
+{
+  background: #fff;
+  width: 60%;             /* narrow fixed width */
+  margin: 30px auto;
+  padding: 1.5rem 1rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
